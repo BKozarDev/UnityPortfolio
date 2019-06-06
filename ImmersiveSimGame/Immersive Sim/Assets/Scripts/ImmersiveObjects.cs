@@ -31,7 +31,7 @@ public class ImmersiveObjects : MonoBehaviour
     public bool isRotating { get; private set; }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         UpdateInput();
         UpdateLogic();
@@ -39,7 +39,7 @@ public class ImmersiveObjects : MonoBehaviour
 
     private void UpdateInput()
     {
-        if(Input.GetKey(KeyCode.Mouse0) && canGrab)
+        if(Input.GetKeyDown(KeyCode.Mouse0) && canGrab)
         {
             wantGrab = true;
         } else if(Input.GetKeyUp(KeyCode.Mouse0))
@@ -47,7 +47,7 @@ public class ImmersiveObjects : MonoBehaviour
             wantGrab = false;
         }
         
-        if(Input.GetKey(KeyCode.Mouse1) && grabbed != null && canRotate)
+        if(Input.GetKeyDown(KeyCode.Mouse1) && grabbed != null && canRotate)
         {
             wantRotate = true;
         } else if(Input.GetKeyUp(KeyCode.Mouse1))
@@ -77,6 +77,7 @@ public class ImmersiveObjects : MonoBehaviour
                 if (grabbed.GetComponent<Rigidbody>())
                 {
                     Rigidbody rigidB = grabbed.GetComponent<Rigidbody>();
+                    rigidB.constraints = RigidbodyConstraints.FreezeRotation;
                     rigidB.velocity = ((center.position + (center.forward * wantedPosition)) - grabbed.transform.position) * rate;
                 } else
                 {
@@ -87,6 +88,8 @@ public class ImmersiveObjects : MonoBehaviour
         {
             if(grabbed != null)
             {
+                Rigidbody rb = grabbed.GetComponent<Rigidbody>();
+                rb.constraints = RigidbodyConstraints.None;
                 grabbed = null;
             }
         }

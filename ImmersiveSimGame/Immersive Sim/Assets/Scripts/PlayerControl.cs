@@ -22,6 +22,8 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         audioController = GameObject.FindGameObjectWithTag("Audio");
         _camera = GameObject.FindGameObjectWithTag("MainCamera");
         rb = GetComponent<Rigidbody>();
@@ -42,7 +44,7 @@ public class PlayerControl : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         UpdateInput();
         UpdateAction();

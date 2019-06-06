@@ -8,7 +8,6 @@ public class AudioControl : MonoBehaviour
 
     public AudioSource[] source;
 
-    // Start is called before the first frame update
     void Start()
     {
         source[0].clip = music[0];
