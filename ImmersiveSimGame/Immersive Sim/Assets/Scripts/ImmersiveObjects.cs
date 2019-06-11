@@ -39,18 +39,18 @@ public class ImmersiveObjects : MonoBehaviour
 
     private void UpdateInput()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0) && canGrab)
+        if(Input.GetKey(KeyCode.Mouse0) && canGrab)
         {
             wantGrab = true;
-        } else if(Input.GetKeyUp(KeyCode.Mouse0))
+        } else
         {
             wantGrab = false;
         }
         
-        if(Input.GetKeyDown(KeyCode.Mouse1) && grabbed != null && canRotate)
+        if(Input.GetKey(KeyCode.Mouse1) && grabbed != null && canRotate)
         {
             wantRotate = true;
-        } else if(Input.GetKeyUp(KeyCode.Mouse1))
+        } else 
         {
             wantRotate = false;
         }

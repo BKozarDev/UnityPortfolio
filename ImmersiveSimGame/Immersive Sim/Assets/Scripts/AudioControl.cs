@@ -21,6 +21,10 @@ public class AudioControl : MonoBehaviour
     }
     public void FlashLight_turn_Off()
     {
+        if (source[1].isPlaying)
+        {
+            source[1].Stop();
+        }
         source[1].clip = music[2];
         source[1].Play();
     }

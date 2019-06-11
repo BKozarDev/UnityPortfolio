@@ -61,7 +61,6 @@ public class BobbingCamera : MonoBehaviour
             translateChange *= totalAxes;
             newPos = transform.localPosition;
             newPos.y = midPointY + translateChange;
-            Debug.Log(translateChange);
             transform.localPosition = newPos;
         }
         else

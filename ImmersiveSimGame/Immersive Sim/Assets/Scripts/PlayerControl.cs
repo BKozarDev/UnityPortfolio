@@ -54,7 +54,7 @@ public class PlayerControl : MonoBehaviour
 
     private bool jump = false;
     private bool haveLight = true;
-    private bool isLight = false;
+    public bool isLight = false;
 
     private void UpdateInput()
     {
